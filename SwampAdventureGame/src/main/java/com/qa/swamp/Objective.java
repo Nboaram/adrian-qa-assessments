@@ -1,6 +1,5 @@
 package com.qa.swamp;
 
-import java.net.SocketTimeoutException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +13,7 @@ public class Objective extends GameObject {
 	}
 	
 	public void event() {
-		int value = rand.nextInt(4);
+		int value = rand.nextInt(6);
 		switch (value) {
 		case 0:
 			niceLake();
@@ -27,6 +26,12 @@ public class Objective extends GameObject {
 			break;
 		case 3:
 			skeletonFight();
+			break;
+		case 4:
+			path();
+			break;
+		case 5:
+			bog();
 			break;
 		}
 	}
@@ -93,6 +98,40 @@ public class Objective extends GameObject {
 		}
 		
 	}
+	
+	public void path() {
+		System.out.println("You find a path, you follow it for a while\r\n"
+						+ "but eventually you start recognising more and more scenery.");
+	}
+	
+	public void bog() {
+		System.out.println("You stroll along and then, BAM,\r\n"
+						+ "You are waist deep in a bog");
+		
+		while(!userInput.equals("Look")) {
+			System.out.println("What do you do?");
+			System.out.println("Swim, Float, Look");
+			userInput = input();
+			
+			if (userInput.equals("Swim")) {
+				System.out.println("You try to swim for dry land,\r\n"
+								 + "but you end up sinking more and more\r\n"
+								 + "and you die...");
+									System.exit(0);
+			} else if (userInput.equals("Float")) {
+				System.out.println("You float about for a bit contemplating life");
+			} else if (userInput.equals("Look")) {
+				System.out.println("You see a handly placed rope,\r\n"
+								+ "and pull yourself to safety.");
+									break;
+			} else {
+				System.out.println("Incorrect Input, You start to sink...");
+			}
+			
+		}
+	}
+	
+	
 	
 	public String input() {
 		Scanner scanner = new Scanner(System.in);
