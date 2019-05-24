@@ -13,7 +13,7 @@ public class Objective extends GameObject {
 	}
 	
 	public void event() {
-		int value = rand.nextInt(7);
+		int value = rand.nextInt(8);
 		switch (value) {
 		case 0:
 			niceLake();
@@ -35,6 +35,9 @@ public class Objective extends GameObject {
 			break;
 		case 6:
 			bee();
+			break;
+		case 7:
+			mole();
 			break;
 		}
 	}
@@ -136,6 +139,10 @@ public class Objective extends GameObject {
 	
 	public void bee() {
 		System.out.println("You come across a Bee. You try to ask him the way out. He's busy.");
+	}
+	
+	public void mole() {
+		System.out.println("A mole tunnels under your feet. He notices your there and decides he's not interested.");
 	}
 	
 	
